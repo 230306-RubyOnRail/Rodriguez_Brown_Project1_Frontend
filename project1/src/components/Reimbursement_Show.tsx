@@ -1,5 +1,6 @@
 import { Reimbursement } from "../models/reimbursement";
 import { User } from "../models/user";
+import { format } from 'react-string-format';
 
 interface IReimbursementShowProps{
     currentUser: User | undefined;
@@ -12,7 +13,7 @@ export default function ReimbursementShow(props: IReimbursementShowProps){
         try{
             let response = await fetch('http://localhost:3000/reimbursements', {
                 method: 'GET',
-                headers: {'Authorization': "Bearer ${props.currentUser?.token}" }
+                headers: {'Authorization': format("Bearer {0}", props.currentUser?.token )}
             });
 
             if (response.status === 200){

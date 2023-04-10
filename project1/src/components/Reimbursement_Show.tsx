@@ -13,7 +13,7 @@ export default function ReimbursementShow(props: IReimbursementShowProps){
         try{
             let response = await fetch('http://localhost:3000/reimbursements', {
                 method: 'GET',
-                headers: {'Authorization': format("Bearer {0}", props.currentUser?.token )}
+                headers: {'Authorization': format(`Bearer ${props.currentUser?.token}` )}
             });
 
             if (response.status === 200){

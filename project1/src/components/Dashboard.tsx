@@ -10,15 +10,17 @@ export default function Dashboard(props: IDashboardProps) {
         props.currentUser ?
         <div>
             <p>
-                Hello user number {props.currentUser.user_id}
+                Welcome back to Revature ERS!
+            </p>
+        </div>
+        :
+        <div>
+            <p>
+                Welcome to Revature ERS!
             </p>
             <p>
                 <Link to='/login'>Click to Login</Link>
             </p>
         </div>
-        :
-        <>
-            <Navigate to="/login" />
-        </>
     );
 }

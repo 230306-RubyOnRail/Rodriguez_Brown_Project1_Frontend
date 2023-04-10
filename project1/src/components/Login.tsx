@@ -38,9 +38,7 @@ export default function Login(props: ILoginProps){
 
                 if (response.status === 201) {
                     props.setCurrentUser(response.data);
-                    if (props.currentUser?.token) {
-                        sessionStorage.setItem('token', props.currentUser.token);
-                    }
+                    sessionStorage.setItem('token', response.data.token);
                     setRedirect(true);
                 } else {
                     setErrorMessage('Username and/or password incorrect. Please try again.');

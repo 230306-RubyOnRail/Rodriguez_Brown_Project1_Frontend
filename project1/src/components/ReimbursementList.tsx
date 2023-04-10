@@ -18,6 +18,7 @@ export default function ReimbursementList(props: IReimbursementListProps){
     useEffect(() => {
         setIsLoading(true);
         getReimbursements();
+        
     }, [])
 
     let getReimbursements = async () =>{

@@ -5,6 +5,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { deleteReimbursement } from "../remote/services/reimbursements-service";
+import { SyntheticEvent, useState } from "react";
 
 interface IReimbursementProps{
     reimbursement: Reimbursement | undefined
@@ -20,9 +22,37 @@ export default function ReimbursementComponent(props: IReimbursementProps){
     } else {
         status = "Rejected";
     }
-    
 
+    const [deleted, setDeleted] = useState(false);
+
+    let deleteButton = async (e: SyntheticEvent) => {
+      console.log('Reimbursement Hello?');
+      if (props.reimbursement !== undefined) {
+        try{
+
+          let response = await deleteReimbursement(props.reimbursement.id);
+          if (response.status === 200){
+            setDeleted(true);
+          }
+          
+        }catch (err){
+          console.log(err +" Reimbursement?");
+        }
+      }
+    }
+
+
+    
+    
+    //Card 
     return (
+      deleted?
+      <>
+      Reimbursement Deleted !
+      </>
+      
+      :
+
         <Card sx={{ width: 275 }}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -42,8 +72,14 @@ export default function ReimbursementComponent(props: IReimbursementProps){
         </CardContent>
         <CardActions>
           <Button size="small">Update</Button>
-          <Button size="small">Delete</Button>
-        </CardActions>
+          <Button
+            onClick ={deleteButton} // delete button
+            type = "submit"
+            size = "small"
+            >Delete 
+          </Button>
+          </CardActions>
       </Card>
     );
 }
+

@@ -7,3 +7,7 @@ export const getListReimbursements = async () => {
 export const deleteReimbursement = async (id:number) => {
     return await authenticatedAppClient.delete(`/reimbursements/${id}`);
 }
+
+export const updateReimbursement = async (id:number) => {
+    return await authenticatedAppClient.put(`/reimbursements/${id}`);
+}

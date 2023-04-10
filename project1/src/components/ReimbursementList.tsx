@@ -58,7 +58,7 @@ export default function ReimbursementList(props: IReimbursementListProps){
                 reimbursementList.map((reim: Reimbursement, key) =>{
                     return (
                         <div key={key}>
-                            <ReimbursementComponent reimbursement={reim} key={key} />
+                            <ReimbursementComponent currentUser={props.currentUser} reimbursement={reim} key={key} />
                             <br />
                         </div>
                     );

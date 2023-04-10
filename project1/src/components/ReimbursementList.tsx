@@ -18,7 +18,7 @@ export default function ReimbursementList(props: IReimbursementListProps){
     useEffect(() => {
         setIsLoading(true);
         getReimbursements();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        
     }, [])
 
     let getReimbursements = async () =>{

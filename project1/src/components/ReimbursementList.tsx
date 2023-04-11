@@ -4,6 +4,7 @@ import { User } from "../models/user";
 import { Link } from "react-router-dom";
 import ReimbursementComponent from "./ReimbursementComponent";
 import { getListReimbursements } from "../remote/services/reimbursements-service";
+import Button from '@mui/material/Button';
 
 interface IReimbursementListProps{
     currentUser: User | undefined;
@@ -51,7 +52,19 @@ export default function ReimbursementList(props: IReimbursementListProps){
         </div>
         :
         !isLoading && reimbursementList ?
+
         <div className = 'ReimbursementList'>
+        {props.currentUser?.admin?
+            <></>
+            :
+            <Link to="/reimbursements/create">
+            <Button 
+                size = "small"
+            >New Reimbursement
+            </Button>
+            </Link>
+        
+        }
             <br />
             <ul>
             {

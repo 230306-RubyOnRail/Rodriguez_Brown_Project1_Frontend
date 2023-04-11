@@ -15,3 +15,7 @@ export const updateReimbursement = async (id:number, items: {description:string,
 export const updateReimbursementAdmin = async (id:number, items: {status:number}) => {
     return await authenticatedAppClient.put(`/reimbursements/${id}`, items);
 }
+
+export const createReimbursement = async (items: {description:string, amount:number}) => {
+    return await authenticatedAppClient.post(`/reimbursements`, items);
+}

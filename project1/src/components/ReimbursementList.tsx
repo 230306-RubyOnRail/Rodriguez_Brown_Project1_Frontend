@@ -32,7 +32,7 @@ export default function ReimbursementList(props: IReimbursementListProps){
                 let reimbursements: Reimbursement[] = [];
                 let i = 0;
                 response.data.forEach((reim: any) => {
-                    reimbursements[i] = new Reimbursement(reim.id, reim.user_id, reim.description, reim.amount, reim.status);
+                    reimbursements[i] = new Reimbursement(reim.id, reim.description, reim.amount, reim.status, reim.name);
                     i++;
                 });
                 setReimbursementList(reimbursements);

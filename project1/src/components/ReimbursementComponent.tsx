@@ -26,9 +26,12 @@ export default function ReimbursementComponent(props: IReimbursementProps){
               return "Pending";
           } else if (status === 2) {
               return "Approved";
-          } else {
+          } else if (status === 3) {
               return "Rejected";
           }
+            else{
+              return "Error";
+            }
           });
 
      
@@ -140,7 +143,7 @@ export default function ReimbursementComponent(props: IReimbursementProps){
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             ID: {props.reimbursement?.id}
             <br/>
-            User ID: {props.reimbursement?.user_id}
+            Name: {props.reimbursement?.name}
           </Typography>       
           <Typography variant="h5" component="div">
             {myStatus}
@@ -179,7 +182,7 @@ export default function ReimbursementComponent(props: IReimbursementProps){
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             ID: {props.reimbursement?.id}
             <br/>
-            User ID: {props.reimbursement?.user_id}
+            Name: {props.reimbursement?.name}
           </Typography>       
           <Typography variant="h5" component="div">
             {myStatus}

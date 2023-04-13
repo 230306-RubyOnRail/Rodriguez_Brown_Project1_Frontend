@@ -18,6 +18,7 @@ export default function UserCreate(props: IUserCreateProps){
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+    const [admin, setAdmin] = useState(false);
     const [success, setSuccess] =useState(false);
 
 
@@ -32,13 +33,18 @@ export default function UserCreate(props: IUserCreateProps){
     }
     let updateName = (e:SyntheticEvent) => {
         setName(((e.target as HTMLInputElement).value));
-    
+    }
+
+    let updateAdmin = (e:SyntheticEvent) => {
+        setAdmin(!admin); // Check box: if true make false.
+    }
+
     let submitButton = async (e: SyntheticEvent) => {
       
-        if (username !== undefined && password !== undefined) {           
+        if (username !== undefined && password !== undefined && name !== undefined) {           
             try{
             
-              let response = await createUser({username, password, name});
+              let response = await createUser({username, password, name, admin});
               if (response.status === 200){
                 setSuccess(true); 
                 console.log('User created successfully')
@@ -69,13 +75,17 @@ export default function UserCreate(props: IUserCreateProps){
         <Card sx={{ width: 275 }}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            New User 
+              {admin?
+                'Manager'
+                  :
+                  'Employee'
+              }
             </Typography>       
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            Username: <input
+            <Typography variant="body2">
+              <input
               type = "text"
               id = "Username"
-              placeholder = "Enter your Username"
+              placeholder = "Enter Username"
               onChange = {updateUsername}
             />
           </Typography>
@@ -83,7 +93,7 @@ export default function UserCreate(props: IUserCreateProps){
             <input
               type = "text"
               id = "Password"
-              placeholder = "Enter your Password"
+              placeholder = "Enter Password"
               onChange = {updatePassword}              
             />  
             </Typography>
@@ -91,12 +101,19 @@ export default function UserCreate(props: IUserCreateProps){
             <input
               type = "text"
               id = "Name"
-              placeholder = "Name?"
+              placeholder = "Enter Name"
               onChange = {updateName}              
             />  
             </Typography>
+            
         </CardContent>
-        <CardActions>
+        <CardActions>  
+          
+          <Button
+              onClick ={updateAdmin} // admin button
+              size = "small"
+            >Change Status 
+          </Button>
 
           <Button
             onClick ={submitButton} // delete button
@@ -104,10 +121,10 @@ export default function UserCreate(props: IUserCreateProps){
             size = "small"
           >Submit 
           </Button>
+          
           </CardActions>
       </Card>
 
       
     );
-}
 }

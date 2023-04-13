@@ -8,6 +8,6 @@ export const getListUser = async () => {
     return await authenticatedAppClient.get('/users');
 }
 
-export const createUser = async (items: {username:string, password:string, name:string}) => {
+export const createUser = async (items: {username:string, password:string, name:string, admin:boolean}) => {
     return await authenticatedAppClient.post(`/users`, items);
 }

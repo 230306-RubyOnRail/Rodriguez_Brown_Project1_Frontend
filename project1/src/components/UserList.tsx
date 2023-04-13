@@ -55,17 +55,15 @@ export default function UserList(props: IUserListProps){
         !isLoading && userList ?
 
         <div className = 'UserList'>
-        {props.currentUser?.admin?
-            <></>
-            :
-            <Link to="/Users/create">
+            
+            <Link to="/users/create">
             <Button 
                 size = "small"
             >New User
             </Button>
             </Link>
+    
         
-        }
             <br />
             <ul>
             {

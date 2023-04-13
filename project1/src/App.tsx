@@ -8,6 +8,7 @@ import ReimbursementList from './components/ReimbursementList';
 import Nav from './components/Nav';
 import ReimbursementCreate from './components/ReimbursementCreate';
 import UserList from './components/UserList';
+import UserCreate from './components/UserCreate';
 
 
 function App() {
@@ -24,7 +25,7 @@ const [principal, setPrincipal] = useState<User>();
         <Route path='/reimbursements' element={<ReimbursementList currentUser={principal}/>}/>
         <Route path='/reimbursements/create' element={<ReimbursementCreate currentUser={principal}/>}/>
         <Route path='/users' element={<UserList currentUser={principal}/>}/>
-        <Route path='/users/create' element={<UserList currentUser={principal}/>}/>
+        <Route path='/users/create' element={<UserCreate currentUser={principal}/>}/>
       </Routes>
       </BrowserRouter>
     </div>

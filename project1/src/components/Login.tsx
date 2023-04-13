@@ -29,6 +29,7 @@ export default function Login(props: ILoginProps){
     let updatePassword = (e: SyntheticEvent) => {
         setPassword((e.target as HTMLInputElement).value);
     }
+    
     let submitLogin = async (e: SyntheticEvent) => {
         setErrorMessage('');
         if (username && password && username.length > 3 && username.length < 17 && password.length > 7 && password.length < 21) {

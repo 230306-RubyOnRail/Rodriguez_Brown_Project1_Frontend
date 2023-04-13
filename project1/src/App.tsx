@@ -6,6 +6,9 @@ import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ReimbursementList from './components/ReimbursementList';
 import Nav from './components/Nav';
+import ReimbursementCreate from './components/ReimbursementCreate';
+import UserList from './components/UserList';
+import UserCreate from './components/UserCreate';
 
 
 function App() {
@@ -15,11 +18,14 @@ const [principal, setPrincipal] = useState<User>();
   return (
     <div className="App">
       <BrowserRouter>
-      <Nav />
+      <Nav currentUser={principal}/>
       <Routes>
         <Route path='/login' element={<Login currentUser={principal} setCurrentUser={setPrincipal}/>}/>
         <Route path='/' element={<Dashboard currentUser={principal}/>}/>
         <Route path='/reimbursements' element={<ReimbursementList currentUser={principal}/>}/>
+        <Route path='/reimbursements/create' element={<ReimbursementCreate currentUser={principal}/>}/>
+        <Route path='/users' element={<UserList currentUser={principal}/>}/>
+        <Route path='/users/create' element={<UserCreate currentUser={principal}/>}/>
       </Routes>
       </BrowserRouter>
     </div>

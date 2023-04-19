@@ -28,8 +28,6 @@ export default function ReimbursementList(props: IReimbursementListProps){
             let response = await getListReimbursements();
 
             if (response.status === 200){
-                console.log(response.data);
-                console.log(response.data.length);
                 let reimbursements: Reimbursement[] = [];
                 let i = 0;
                 response.data.forEach((reim: any) => {
@@ -37,7 +35,6 @@ export default function ReimbursementList(props: IReimbursementListProps){
                     i++;
                 });
                 setReimbursementList(reimbursements);
-                console.log(reimbursementList);
                 setIsLoading(false);
             }
         }

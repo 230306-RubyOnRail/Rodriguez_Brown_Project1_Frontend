@@ -1,7 +1,8 @@
 import axios from "axios";
+import { baseURL } from "./baseURL";
 
 export const appClient = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: baseURL,
     headers: {
         'Content-Type': 'application/json'
     }

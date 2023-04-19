@@ -57,7 +57,7 @@
 }
 
 input {
-  width: fill;
+  width: stretch;
   padding: 3px;
   margin: 3px;
   border-style: solid;
